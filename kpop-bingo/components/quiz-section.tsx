@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
-import Image from "next/image"
 import { quizData } from "@/lib/quiz-data"
 
 interface QuizSectionProps {
@@ -34,7 +33,6 @@ export default function QuizSection({ onClose, usedQuizIds, onComplete }: QuizSe
     
     // 選択されたクイズのIDを取得（元の配列内のインデックス）
     const originalIndex = quizData.findIndex(quiz => 
-      quiz.image === selectedQuizData.image && 
       quiz.question === selectedQuizData.question
     )
     
@@ -61,108 +59,101 @@ export default function QuizSection({ onClose, usedQuizIds, onComplete }: QuizSe
     }
   }
 
+  // 選択肢のラベルを生成（A, B, C...）
+  const getOptionLabel = (index: number) => {
+    return String.fromCharCode(65 + index) // A, B, C...
+  }
+
+  // 選択肢を4つに拡張（空欄で埋める）
+  const paddedOptions = [...selectedQuiz.options]
+  while (paddedOptions.length < 4) {
+    paddedOptions.push("")
+  }
+
   return (
-    <Card className="bg-black/90 backdrop-blur-md border-4 border-orange-500 shadow-[0_0_20px_rgba(255,153,0,0.6)] rounded-xl w-full h-full">
+    <Card className="bg-white/95 backdrop-blur-md border-4 border-blue-500 shadow-[0_0_20px_rgba(33,150,243,0.3)] rounded-xl w-full h-full">
       <CardContent className="p-10 h-full flex flex-col">
         <div className="flex justify-between items-center mb-8">
-          <h3 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-300 to-yellow-200">
+          <h3 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-700">
             BINGO! Quiz Time
           </h3>
           <Button
             variant="ghost"
             size="lg"
             onClick={handleClose}
-            className="text-orange-300 hover:text-orange-100 hover:bg-orange-900/30 p-4"
+            className="text-blue-700 hover:text-blue-900 hover:bg-blue-100/30 p-4"
           >
             <X className="h-10 w-10" />
           </Button>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-10 flex-grow">
-          <div className="lg:w-1/2 flex flex-col justify-center">
-            <div className="rounded-xl overflow-hidden border-4 border-orange-500/50 shadow-[0_0_20px_rgba(255,153,0,0.5)] relative">
-              <img src={selectedQuiz.image} alt="Quiz image" className="w-full h-auto" />
-              
-              {/* 不正解時のみフィードバック画像表示 */}
-              {showResult && !isCorrect && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                    className="w-full h-full relative"
-                  >
-                    <img
-                      src={selectedQuiz.feedbackImage}
-                      alt="Feedback image"
-                      className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.9)]"
-                    />
-                  </motion.div>
-                </div>
-              )}
-            </div>
+        <div className="flex flex-col justify-center flex-grow">
+          {/* 問題文 */}
+          <div className="text-center mb-12">
+            <p className="text-blue-800 text-4xl font-bold leading-relaxed">
+              {selectedQuiz.question}
+            </p>
           </div>
 
-          <div className="lg:w-1/2 flex flex-col justify-center">
-            <p className="text-orange-200 text-3xl mb-8">{selectedQuiz.question}</p>
-
-            <div className="space-y-6">
-              {selectedQuiz.options.map((option, index) => (
-                <motion.div key={index} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button
-                    variant="outline"
-                    className={`w-full justify-start text-left p-6 border-3 text-2xl min-h-[100px] ${
-                      selectedOption === index
-                        ? selectedOption === selectedQuiz.correctAnswer
-                          ? "border-green-500 bg-green-500/20 text-green-300"
-                          : "border-red-500 bg-red-500/20 text-red-300"
-                        : "border-orange-500/50 bg-black/60 hover:bg-orange-900/30 text-orange-100"
-                    }`}
-                    onClick={() => !showResult && handleOptionSelect(index)}
-                    disabled={showResult}
-                  >
-                    <div className="flex items-center w-full">
-                      <span className="flex-1">{option}</span>
-                      {showResult && selectedOption === index && (
-                        <div className="w-16 h-16 flex-shrink-0 ml-4">
-                          <img 
-                            src={index === selectedQuiz.correctAnswer ? "/maru.png" : "/batu.png"} 
-                            alt={index === selectedQuiz.correctAnswer ? "Correct" : "Incorrect"}
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                      )}
+          {/* 2×2の選択肢グリッド（常に4つ） */}
+          <div className="grid grid-cols-2 grid-rows-2 gap-10 w-full mx-auto h-[50vh] items-center justify-center">
+            {paddedOptions.map((option, index) => (
+              <motion.div key={index} whileHover={option ? { scale: 1.04 } : {}} whileTap={option ? { scale: 0.98 } : {}} className="flex items-center justify-center h-full">
+                <Button
+                  variant="outline"
+                  className={`w-full h-[12vh] min-h-[100px] text-3xl md:text-4xl font-bold flex items-center justify-center border-4 transition-all duration-200
+                    ${selectedOption === index
+                      ? selectedOption === selectedQuiz.correctAnswer
+                        ? "border-blue-600 bg-blue-100 text-blue-800"
+                        : "border-red-500 bg-red-100 text-red-500"
+                      : "border-blue-400 bg-white hover:bg-blue-50 text-blue-800"}
+                    ${!option ? "opacity-0 pointer-events-none" : ""}`}
+                  onClick={() => option && !showResult && handleOptionSelect(index)}
+                  disabled={showResult || !option}
+                >
+                  <span className="bg-blue-500 text-white font-bold rounded-full w-16 h-16 flex items-center justify-center text-2xl mr-6 flex-shrink-0">
+                    {getOptionLabel(index)}
+                  </span>
+                  <span className="flex-1 text-center">{option}</span>
+                  {showResult && selectedOption === index && (
+                    <div className="w-20 h-20 flex-shrink-0 ml-4">
+                      <img 
+                        src={index === selectedQuiz.correctAnswer ? "/maru.png" : "/batu.png"} 
+                        alt={index === selectedQuiz.correctAnswer ? "Correct" : "Incorrect"}
+                        className="w-full h-full object-contain"
+                      />
                     </div>
-                  </Button>
-                </motion.div>
-              ))}
-            </div>
-
-            {showResult && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-8 space-y-6"
-              >
-                <div className={`p-6 rounded-lg text-2xl ${
-                  isCorrect ? "bg-green-500/20 text-green-300" : "bg-red-500/20 text-red-300"
-                }`}>
-                  {isCorrect
-                    ? "Correct! You guessed the right prompt!"
-                    : "Not quite! The correct prompt was: " + selectedQuiz.options[selectedQuiz.correctAnswer]}
-                </div>
-                <div className="flex justify-center mt-6">
-                  <Button
-                    onClick={() => onComplete(quizId)}
-                    size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xl"
-                  >
-                    次へ
-                  </Button>
-                </div>
+                  )}
+                </Button>
               </motion.div>
-            )}
+            ))}
           </div>
+
+          {/* 結果表示 */}
+          {showResult && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-12 space-y-6 text-center"
+            >
+              <div className={`p-8 rounded-lg text-3xl font-bold ${
+                isCorrect ? "bg-blue-100 text-blue-700 border border-blue-400" : "bg-red-100 text-red-500 border border-red-300"
+              }`}>
+                {isCorrect
+                  ? "正解です！素晴らしい！"
+                  : `不正解です。正解は「${getOptionLabel(selectedQuiz.correctAnswer)}. ${selectedQuiz.options[selectedQuiz.correctAnswer]}」でした。`}
+              </div>
+              <div className="flex justify-center">
+                <Button
+                  onClick={() => onComplete(quizId)}
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-6 px-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-2xl"
+                >
+                  次へ
+                </Button>
+              </div>
+            </motion.div>
+          )}
         </div>
       </CardContent>
     </Card>

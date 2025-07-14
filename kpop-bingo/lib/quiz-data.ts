@@ -1,290 +1,260 @@
 interface QuizItem {
-  image: string
-  question: string // 問題文を追加
-  options: [string, string] // Exactly two options
-  correctAnswer: 0 | 1 // 0 for first option, 1 for second option
-  feedbackImage: string // 回答選択後に表示される画像
+  question: string
+  options: string[] // 2つまたは3つの選択肢
+  correctAnswer: number // 正解のインデックス
 }
 
 export const quizData: QuizItem[] = [
   {
-    image: "/quiz-images/quiz1.png",
-    question: "モルモットと合体した動物は何？",
+    question: "日本の首都は？",
     options: [
-      "アヒル",
-      "ガチョウ"
+      "大阪",
+      "東京",
+      "京都"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz1_A.png"
+    correctAnswer: 1
   },
   {
-    image: "/quiz-images/quiz2.png",
-    question: "うさぎと合体した動物は何？",
+    question: "1+1は？",
     options: [
-      "フクロウ",
-      "ミミズク"
+      "1",
+      "2",
+      "3"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz2_A.png"
+    correctAnswer: 1
   },
   {
-    image: "/quiz-images/quiz3.png",
-    question: "ハムスターと合体した動物は何？",
+    question: "日本の国花は？",
     options: [
-      "ヤギ",
-      "ヒツジ"
+      "桜",
+      "菊",
+      "梅"
     ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz3_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz4.png",
-    question: "柴犬と合体した動物は何？",
+    question: "富士山の高さは？",
     options: [
-      "キツネ",
-      "フェレット"
+      "3,776m",
+      "3,000m",
+      "4,000m"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz4_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz5.png",
-    question: "柴犬と合体した動物は何？",
+    question: "日本の人口は約？",
     options: [
-      "たぬき",
-      "アライグマ"
+      "1億人",
+      "1億2千万人",
+      "8千万人"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz5_A.png"
+    correctAnswer: 1
   },
   {
-    image: "/quiz-images/quiz6.png",
-    question: "しろくまと合体した動物は何？",
+    question: "日本の面積は？",
     options: [
-      "ペンギン",
-      "パンダ"
+      "約37万km²",
+      "約47万km²",
+      "約57万km²"
     ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz6_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz7.png",
-    question: "エルビス・プレスリーと合体した人物は誰？",
+    question: "日本の国技は？",
     options: [
-      "マリリン・モンロー",
-      "オードリー・ヘップバーン"
+      "柔道",
+      "相撲",
+      "剣道"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz7_A.png"
+    correctAnswer: 1
   },
   {
-    image: "/quiz-images/quiz8.png",
-    question: "マツコ・デラックスと合体した人物は誰？",
+    question: "日本の通貨は？",
     options: [
-      "松本人志",
-      "千鳥・大吾"
+      "円",
+      "ドル",
+      "ユーロ"
     ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz8_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz9.png",
-    question: "タモリと合体した人物は誰？",
+    question: "日本の国旗の色は？",
     options: [
-      "スティーブ・ジョブズ",
-      "スティーヴン・スピルバーグ"
+      "赤と白",
+      "青と白",
+      "緑と白"
     ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz9_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz10.png",
-    question: "ライオンと合体した動物は何？",
+    question: "日本の国歌は？",
     options: [
-      "タコ",
-      "イカ"
+      "君が代",
+      "さくらさくら",
+      "荒城の月"
     ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz10_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz11.png",
-    question: "イルカと合体した動物は何？",
+    question: "日本の最高峰は？",
     options: [
-      "ねずみ",
-      "カピバラ"
+      "富士山",
+      "北岳",
+      "槍ヶ岳"
     ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz11_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz12.png",
-    question: "カモメと合体した動物は何？",
-    options: [
-      "ペリカン",
-      "アホウドリ"
-    ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz12_A.png"
-  },
-  {
-    image: "/quiz-images/quiz13.png",
-    question: "カラスと合体した動物は何？",
-    options: [
-      "アザラシ",
-      "オットセイ"
-    ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz13_A.png"
-  },
-  {
-    image: "/quiz-images/quiz14.png",
-    question: "カニと合体した動物は何？",
-    options: [
-      "イカ",
-      "くらげ"
-    ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz14_A.png"
-  },
-  {
-    image: "/quiz-images/quiz15.png",
-    question: "イルカと合体した動物は何？",
-    options: [
-      "イルカ",
-      "アザラシ"
-    ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz15_A.png"
-  },
-  {
-    image: "/quiz-images/quiz16.png",
-    question: "クラゲと合体した動物は何？",
-    options: [
-      "フラミンゴ",
-      "サギ"
-    ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz16_A.png"
-  },
-  {
-    image: "/quiz-images/quiz17.png",
-    question: "サメと合体した動物は何？",
-    options: [
-      "クジラ",
-      "ジンベイザメ"
-    ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz17_A.png"
-  },
-  {
-    image: "/quiz-images/quiz18.png",
-    question: "リクガメと合体した動物は何？",
+    question: "日本の国鳥は？",
     options: [
       "キジ",
-      "ヤンバルクイナ"
+      "トキ",
+      "ウグイス"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz18_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz19.png",
-    question: "パンダと合体した人は誰？",
+    question: "日本の国魚は？",
     options: [
-      "ピース・又吉",
-      "マイケル・ジャクソン"
+      "マグロ",
+      "サケ",
+      "コイ"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz19_A.png"
+    correctAnswer: 2
   },
   {
-    image: "/quiz-images/quiz20.png",
-    question: "ハリネズミと合体した人は誰？",
+    question: "日本の国樹は？",
     options: [
-      "マザー・テレサ",
-      "レディー・ガガ"
+      "桜",
+      "松",
+      "杉"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz20_A.png"
+    correctAnswer: 1
   },
   {
-    image: "/quiz-images/quiz21.png",
-    question: "掃除機と合体した動物は何？",
+    question: "日本の国石は？",
     options: [
-      "アリクイ",
-      "アルマジロ"
+      "水晶",
+      "翡翠",
+      "真珠"
     ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz21_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz22.png",
-    question: "Bluetoothイヤホンと合体した動物は何？",
+    question: "日本の国蝶は？",
     options: [
-      "ヤモリ",
-      "カメレオン"
+      "オオムラサキ",
+      "アゲハチョウ",
+      "モンシロチョウ"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz22_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz23.png",
-    question: "ルンバと合体した動物は何？",
+    question: "日本の国獣は？",
     options: [
-      "ウナギ",
-      "アナゴ"
+      "ニホンカモシカ",
+      "ニホンザル",
+      "ニホンオオカミ"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz23_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz24.png",
-    question: "電子レンジと合体した家電は何？",
+    question: "日本の国菌は？",
     options: [
-      "空気清浄機",
-      "スピーカー"
+      "麹菌",
+      "乳酸菌",
+      "納豆菌"
     ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz24_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz25.png",
-    question: "アイロンと合体した家電は何？",
+    question: "日本の国歌の作詞者は？",
     options: [
-      "電子レンジ",
-      "炊飯器"
+      "不明",
+      "野村望東尼",
+      "大伴家持"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz25_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz26.png",
-    question: "ドラえもんと合体したキャラクターは何？",
+    question: "日本の国歌の作曲者は？",
     options: [
-      "ウサビッチ",
-      "トトロ"
+      "林広守",
+      "宮内省雅楽部",
+      "不明"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz26_A.png"
+    correctAnswer: 1
   },
   {
-    image: "/quiz-images/quiz27.png",
-    question: "鉄腕アトムと合体したロボットは何？",
+    question: "日本の国歌の歌詞は何文字？",
     options: [
-      "ロックマン",
-      "ペッパー君"
+      "32文字",
+      "28文字",
+      "36文字"
     ],
-    correctAnswer: 0,
-    feedbackImage: "/stamps/quiz27_A.png"
+    correctAnswer: 0
   },
   {
-    image: "/quiz-images/quiz28.png",
-    question: "PCと合体した動物は何？",
+    question: "日本の国歌の長さは約？",
     options: [
-      "トラ",
-      "ライオン"
+      "30秒",
+      "45秒",
+      "60秒"
     ],
-    correctAnswer: 1,
-    feedbackImage: "/stamps/quiz28_A.png"
+    correctAnswer: 1
+  },
+  {
+    question: "日本の国歌の拍子は？",
+    options: [
+      "4/4拍子",
+      "3/4拍子",
+      "6/8拍子"
+    ],
+    correctAnswer: 0
+  },
+  {
+    question: "日本の国歌の調性は？",
+    options: [
+      "ハ長調",
+      "ト長調",
+      "ニ長調"
+    ],
+    correctAnswer: 0
+  },
+  {
+    question: "日本の国歌の初演は？",
+    options: [
+      "1880年",
+      "1890年",
+      "1900年"
+    ],
+    correctAnswer: 0
+  },
+  {
+    question: "日本の国歌の正式採用は？",
+    options: [
+      "1999年",
+      "1989年",
+      "2000年"
+    ],
+    correctAnswer: 0
+  },
+  {
+    question: "日本の国歌の歌詞の意味は？",
+    options: [
+      "天皇の治世",
+      "日本の繁栄",
+      "平和への願い"
+    ],
+    correctAnswer: 0
+  },
+  {
+    question: "日本の国歌の歌詞の出典は？",
+    options: [
+      "古今和歌集",
+      "万葉集",
+      "新古今和歌集"
+    ],
+    correctAnswer: 0
   },
 ] 

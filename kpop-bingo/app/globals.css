@@ -3,7 +3,17 @@
 @tailwind utilities;
 
 body {
+  background: #fff;
+  color: #1a237e;
   font-family: "Meiryo UI", "メイリオ", Meiryo, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0d47a1;
+}
+
+button, .btn {
+  font-weight: bold;
 }
 
 @layer utilities {

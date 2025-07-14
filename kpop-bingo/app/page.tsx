@@ -22,8 +22,8 @@ export default function BingoGame() {
 
     setIsSelecting(true)
 
-    // Create array of numbers 1-75 that haven't been selected yet
-    const availableNumbers = Array.from({ length: 75 }, (_, i) => i + 1).filter((num) => !selectedNumbers.includes(num))
+    // Create array of numbers 1-90 that haven't been selected yet
+    const availableNumbers = Array.from({ length: 90 }, (_, i) => i + 1).filter((num) => !selectedNumbers.includes(num))
 
     if (availableNumbers.length === 0) {
       setIsSelecting(false)
@@ -78,10 +78,10 @@ export default function BingoGame() {
       {showConfetti && <ConfettiEffect />}
 
       <header className="pt-6 pb-3 px-4 text-center">
-        <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-300 via-orange-200 to-yellow-200 mb-2">
-          BINGO AI
+        <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-400 to-blue-700 mb-2">
+          BINGO クイズ
         </h1>
-        <p className="text-orange-200 text-lg">Select numbers and mark your card!</p>
+        <p className="text-blue-700 text-lg font-semibold drop-shadow-sm">数字を選んでカードをマークし、クイズに挑戦しよう！</p>
       </header>
 
       <main className="container mx-auto max-w-[1600px] px-12 py-4 flex flex-row gap-24">
@@ -91,15 +91,15 @@ export default function BingoGame() {
           <div className="mt-8 flex gap-6 justify-center w-full">
             <Button
               onClick={selectNumber}
-              disabled={isSelecting || selectedNumbers.length >= 75}
-              className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white font-bold py-6 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xl min-w-[200px]"
+              disabled={isSelecting || selectedNumbers.length >= 90}
+              className="bg-gradient-to-r from-blue-500 to-blue-400 hover:from-blue-400 hover:to-blue-300 text-white font-bold py-6 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xl min-w-[200px] border-2 border-black"
             >
-              {isSelecting ? "Selecting..." : "Draw Number"}
+              {isSelecting ? "選択中..." : "数字を引く"}
             </Button>
 
             <Button
               onClick={handleBingo}
-              className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-bold py-6 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xl min-w-[200px]"
+              className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-6 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xl min-w-[200px] border-2 border-black"
             >
               BINGO!
             </Button>
@@ -107,9 +107,9 @@ export default function BingoGame() {
             <Button
               onClick={resetGame}
               variant="outline"
-              className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500/10 font-bold py-6 px-10 rounded-full shadow-lg transition-all duration-300 text-xl min-w-[200px]"
+              className="border-2 border-black text-blue-700 hover:bg-blue-100 font-bold py-6 px-10 rounded-full shadow-lg transition-all duration-300 text-xl min-w-[200px]"
             >
-              Reset Game
+              ゲームリセット
             </Button>
           </div>
         </div>

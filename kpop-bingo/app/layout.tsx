@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
-  title: 'BINGO AI',
-  description: 'K-POP BINGO Game',
+  title: 'BINGO クイズ',
+  description: 'BINGO Game with Quiz',
 }
 
 export default function RootLayout({
@@ -23,15 +22,8 @@ export default function RootLayout({
           `}
         </style>
       </head>
-      <body className="font-sans">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+      <body className="font-sans bg-black text-white">
+        {children}
       </body>
     </html>
   )

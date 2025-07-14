@@ -11,6 +11,9 @@ const config = {
   ],
   prefix: "",
   theme: {
+    fontFamily: {
+      sans: ['"Meiryo UI"', '"メイリオ"', 'Meiryo', 'sans-serif'],
+    },
     container: {
       center: true,
       padding: "2rem",

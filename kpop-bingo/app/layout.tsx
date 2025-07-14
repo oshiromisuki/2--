@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'BINGO AI',
+  description: 'K-POP BINGO Game',
 }
 
 export default function RootLayout({
@@ -13,8 +13,26 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="ja" className="font-sans">
+      <head>
+        <style>
+          {`
+            html, body {
+              font-family: "Meiryo UI", "メイリオ", Meiryo, sans-serif;
+            }
+          `}
+        </style>
+      </head>
+      <body className="font-sans">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

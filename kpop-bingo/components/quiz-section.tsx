@@ -71,17 +71,17 @@ export default function QuizSection({ onClose, usedQuizIds, onComplete }: QuizSe
   }
 
   return (
-    <Card className="bg-white/95 backdrop-blur-md border-4 border-blue-500 shadow-[0_0_20px_rgba(33,150,243,0.3)] rounded-xl w-full h-full">
+    <Card className="bg-white/95 backdrop-blur-md border-4 border-orange-500 shadow-[0_0_20px_rgba(255,107,53,0.3)] rounded-xl w-full h-full">
       <CardContent className="p-10 h-full flex flex-col">
         <div className="flex justify-between items-center mb-8">
-          <h3 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-700">
+          <h3 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-700">
             BINGO! Quiz Time
           </h3>
           <Button
             variant="ghost"
             size="lg"
             onClick={handleClose}
-            className="text-blue-700 hover:text-blue-900 hover:bg-blue-100/30 p-4"
+            className="text-orange-700 hover:text-orange-900 hover:bg-orange-100/30 p-4"
           >
             <X className="h-10 w-10" />
           </Button>
@@ -90,7 +90,7 @@ export default function QuizSection({ onClose, usedQuizIds, onComplete }: QuizSe
         <div className="flex flex-col justify-center flex-grow">
           {/* 問題文 */}
           <div className="text-center mb-12">
-            <p className="text-blue-800 text-4xl font-bold leading-relaxed">
+            <p className="text-orange-800 text-4xl font-bold leading-relaxed">
               {selectedQuiz.question}
             </p>
           </div>
@@ -104,14 +104,14 @@ export default function QuizSection({ onClose, usedQuizIds, onComplete }: QuizSe
                   className={`w-full h-[12vh] min-h-[100px] text-3xl md:text-4xl font-bold flex items-center justify-center border-4 transition-all duration-200
                     ${selectedOption === index
                       ? selectedOption === selectedQuiz.correctAnswer
-                        ? "border-blue-600 bg-blue-100 text-blue-800"
+                        ? "border-orange-600 bg-orange-100 text-orange-800"
                         : "border-red-500 bg-red-100 text-red-500"
-                      : "border-blue-400 bg-white hover:bg-blue-50 text-blue-800"}
+                      : "border-orange-400 bg-white hover:bg-orange-50 text-orange-800"}
                     ${!option ? "opacity-0 pointer-events-none" : ""}`}
                   onClick={() => option && !showResult && handleOptionSelect(index)}
                   disabled={showResult || !option}
                 >
-                  <span className="bg-blue-500 text-white font-bold rounded-full w-16 h-16 flex items-center justify-center text-2xl mr-6 flex-shrink-0">
+                  <span className="bg-orange-500 text-white font-bold rounded-full w-16 h-16 flex items-center justify-center text-2xl mr-6 flex-shrink-0">
                     {getOptionLabel(index)}
                   </span>
                   <span className="flex-1 text-center">{option}</span>
@@ -137,7 +137,7 @@ export default function QuizSection({ onClose, usedQuizIds, onComplete }: QuizSe
               className="mt-12 space-y-6 text-center"
             >
               <div className={`p-8 rounded-lg text-3xl font-bold ${
-                isCorrect ? "bg-blue-100 text-blue-700 border border-blue-400" : "bg-red-100 text-red-500 border border-red-300"
+                isCorrect ? "bg-orange-100 text-orange-700 border border-orange-400" : "bg-red-100 text-red-500 border border-red-300"
               }`}>
                 {isCorrect
                   ? "正解です！素晴らしい！"
@@ -147,7 +147,7 @@ export default function QuizSection({ onClose, usedQuizIds, onComplete }: QuizSe
                 <Button
                   onClick={() => onComplete(quizId)}
                   size="lg"
-                  className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-6 px-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-2xl"
+                  className="bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white font-bold py-6 px-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-2xl"
                 >
                   次へ
                 </Button>

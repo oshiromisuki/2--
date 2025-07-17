@@ -32,13 +32,13 @@ export default function ConfettiEffect() {
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        colors: ["#ff44cc", "#9900ff", "#00ccff", "#ff0066"],
+        colors: ["#ff6b35", "#ff8c42", "#ffa726", "#ffcc02", "#ffeb3b"],
       })
       confetti({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        colors: ["#ff44cc", "#9900ff", "#00ccff", "#ff0066"],
+        colors: ["#ff6b35", "#ff8c42", "#ffa726", "#ffcc02", "#ffeb3b"],
       })
     }, 250)
 
